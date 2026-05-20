@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option go_package = "github.com/AditSingh10/ratelimiter/proto";
+
+service RateLimiter {
+    rpc Allow(AllowRequest) returns (AllowResponse);
+}
+
+message AllowRequest {
+    string client_id = 1;
+    string resource = 2;
+    string algorithm = 3;
+}
+
+message AllowResponse {
+    bool allowed = 1;
+    int64 remaining = 2;
+    int64 reset_at_unix = 3;
+    string algorithm_used = 4;
+}

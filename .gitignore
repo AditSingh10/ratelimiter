@@ -1,0 +1,18 @@
+# Binaries
+bin/
+*.exe
+
+# Go build cache
+*.test
+*.out
+
+# Dependency downloads
+vendor/
+
+# Generated protobuf files
+proto/*.pb.go
+
+# Editor
+.DS_Store
+.idea/
+.vscode/

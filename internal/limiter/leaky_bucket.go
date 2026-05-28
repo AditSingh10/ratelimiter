@@ -40,7 +40,7 @@ func NewLeakyBucket(capacity int, rate time.Duration) *LeakyBucket {
 func (lb *LeakyBucket) Allow(ctx context.Context, clientID string) (bool, int64, time.Time, error) {
 	select {
 	case lb.queue <- struct{}{}:
-		return true, int64(len(lb.queue)), time.Now(), nil
+		return true, int64(cap(lb.queue) - len(lb.queue)), time.Now(), nil
 	default:
 		return false, 0, time.Now(), nil
 	}
